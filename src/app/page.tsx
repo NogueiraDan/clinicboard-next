@@ -1,6 +1,6 @@
 import Link from "next/link";
-import custome from "@/public/custome.png";
-import onboarding from "@/public/onboarding.png";
+import psiboard from "@/public/psiboard.jpg";
+import onboarding from "@/public/psiboard_onboarding.png";
 
 export default function Home() {
   return (
@@ -9,21 +9,21 @@ export default function Home() {
         <nav className="sm:flex flex sm:flex-row flex-col justify-between items-center py-4 px-8 sm:mb-0 mb-10 text-white">
           <div className="flex items-center">
             <img
-              src={custome.src}
+              src={psiboard.src}
               alt="Logo"
-              className="h-16 w-auto cursor-pointer mb-5"
+              className="h-14 w-auto cursor-pointer mb-5"
             />
           </div>
 
           <div className="sm:flex items-center space-x-4">
             <button
-              className="px-4 py-1 bg-[#02969c] text-[#fff] font-semibold rounded"
+              className="px-4 py-1 bg-[#132742] text-[#fff] font-semibold rounded"
               data-testid="button-onboarding"
             >
               <Link href="/login">Fazer Login</Link>
             </button>
             <button
-              className="px-4 py-1 bg-[#02969c] text-[#fff] font-semibold rounded"
+              className="px-4 py-1 bg-[#132742] text-[#fff] font-semibold rounded"
               data-testid="button-onboarding"
             >
               <Link href="/register">Cadastre-se</Link>
@@ -41,7 +41,7 @@ export default function Home() {
               controle com acesso fácil, simples e objetivo.
             </p>
           </div>
-          <button className="px-4 py-2 mt-4 bg-[#02969c] text-[#fff] font-semibold rounded">
+          <button className="px-4 py-2 mt-4 bg-[#132742] text-[#fff] font-semibold rounded">
             <a href="#about">Sobre nós</a>
           </button>
         </div>

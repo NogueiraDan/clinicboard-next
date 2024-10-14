@@ -3,17 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  @apply font-poppins;
+  --background: #B9C5B1;
+  --foreground: #132742;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #96a8d3;
+    --foreground: #171717;
   }
-}
+} */
 
 body {
   color: var(--foreground);
