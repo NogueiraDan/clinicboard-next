@@ -7,12 +7,12 @@
   --foreground: #132742;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: #96a8d3;
-    --foreground: #171717;
+    --background: #132742;
+    --foreground: #B9C5B1;
   }
-} */
+}
 
 body {
   color: var(--foreground);

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import psiboard from "@/public/psiboard.jpg";
+import psiboard from "@/public/psiboard.png";
 import onboarding from "@/public/psiboard_onboarding.png";
 
 export default function Home() {
