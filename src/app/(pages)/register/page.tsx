@@ -121,7 +121,7 @@ export default function Page() {
           <div>
             <button
               type="submit"
-              className="flex w-full h-[48px] justify-center flex-col items-center text-base rounded-md bg-[#496aab] px-3 py-1.5 font-semibold leading-6 text-[#fff] shadow-sm"
+              className="flex w-full h-[48px] justify-center flex-col items-center text-base rounded-md bg-[#132742] px-3 py-1.5 font-semibold leading-6 text-[#fff] shadow-sm"
             >
               Cadastrar
             </button>
