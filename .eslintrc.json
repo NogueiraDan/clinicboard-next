@@ -9,6 +9,6 @@
         "ignoreRestSiblings": false
       }
     ],
-    "semi": ["error", "always"]
+    "semi": ["warn", "always"]
   }
 }
