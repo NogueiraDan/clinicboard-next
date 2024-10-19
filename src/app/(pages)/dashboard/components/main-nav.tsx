@@ -1,7 +1,8 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
-
+import { cn } from "@/lib/utils";
+import psiboard from "@/public/psiboard.png";
+import Image from "next/image";
 export function MainNav({
   className,
   ...props
@@ -12,29 +13,29 @@ export function MainNav({
       {...props}
     >
       <Link
-        href="/examples/dashboard"
+        href="/dashboard"
         className="text-sm font-medium transition-colors hover:text-primary"
       >
-        Overview
+        <Image src={psiboard} alt="logo.png" width={54}/>
       </Link>
       <Link
-        href="/examples/dashboard"
+        href="/dashboard"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
-        Customers
+        Pacientes
       </Link>
       <Link
-        href="/examples/dashboard"
+        href="/dashboard"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
-        Products
+        Agendamento
       </Link>
       <Link
-        href="/examples/dashboard"
+        href="/dashboard"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
-        Settings
+        Cadastro paciente
       </Link>
     </nav>
-  )
+  );
 }

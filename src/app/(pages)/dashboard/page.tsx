@@ -26,15 +26,12 @@ export default function Page() {
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics" disabled>
-                Analytics
+              <TabsTrigger value="overview">Inicio</TabsTrigger>
+              <TabsTrigger value="analytics">
+                Métricas
               </TabsTrigger>
-              <TabsTrigger value="reports" disabled>
-                Reports
-              </TabsTrigger>
-              <TabsTrigger value="notifications" disabled>
-                Notifications
+              <TabsTrigger value="notifications">
+                Notificações
               </TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
