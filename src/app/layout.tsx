@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import ReactQueryProvider from "./utils/providers/ReactQueryProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserProvider } from "./context/UserContext";
 
 export const metadata: Metadata = {
   title: "Psiboard",
@@ -25,7 +26,7 @@ export default function RootLayout({
       <body className={`antialiased ${poppins.className}`}>
         <ReactQueryProvider>
           <ToastContainer />
-          {children}
+          <UserProvider>{children}</UserProvider>
         </ReactQueryProvider>
       </body>
     </html>
