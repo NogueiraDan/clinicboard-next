@@ -15,13 +15,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useLogin } from "@/app/hooks/useLogin";
 
 const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
+  email: z.string({
+    required_error: "Valor não pode ser vazio",
+  }).email(),
+  password: z.string({
+    required_error: "Valor não pode ser vazio",
+  }),
 });
 
 export default function Page() {
+  const { login } = useLogin();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -30,8 +36,12 @@ export default function Page() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await login(values);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
