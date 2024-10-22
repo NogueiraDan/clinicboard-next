@@ -4,31 +4,18 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
 import { SchedulingSkeleton } from "./skeletons/schedulings-skeleton";
-import { useQuery } from "@tanstack/react-query";
-import { useUser } from "@/app/context/UserContext";
-import api from "@/app/service/api";
-import { fetchHeaders } from "@/app/utils/fetch-headers";
-import { formatDate } from "@/app/utils/format-date";
+import { useSchedules } from "@/app/hooks/useSchedules";
+import { usePatient } from "@/app/hooks/usePatient";
+import ScheduleDetails from "./schedule-details";
+import { Schedule } from "../types";
 
 export default function Schedulings() {
-  const { user } = useUser();
   const [date, setDate] = React.useState<Date | undefined>(new Date());
-
-  const { data, isFetching, refetch } = useQuery({
-    queryKey: ["schedules", date, user?.id],
-    queryFn: async () => {
-      const response = await api.get(
-        `/scheduling/user/${user?.id}/date?date=${formatDate(date)}`,
-        { headers: fetchHeaders() }
-      );
-      return response.data;
-    },
-    enabled: !!date,
-  });
+  const { schedules, refetchSchedules, isFetching } = useSchedules(date);
 
   function handleChangeCalendarDay(date: Date) {
     setDate(date);
-    refetch;
+    refetchSchedules;
   }
   return (
     <Card className="col-span-3">
@@ -48,20 +35,26 @@ export default function Schedulings() {
             <SchedulingSkeleton />
           ) : (
             <>
-              {data && (
+              {schedules && (
                 <React.Fragment>
-                  {data?.map((schedule: any) => (
-                    <p
+                  {schedules?.map((schedule: Schedule) => (
+                    <div
                       key={schedule.id}
-                      className="rounded border h-[116px] w-full mb-3"
+                      className="rounded border h-auto w-full mb-3 p-3 flex flex-col gap-1"
                     >
-                      Scheduling: {schedule.date}
-                    </p>
+                      <p className="text-lg font-medium">
+                        Horário: {schedule.hour}
+                      </p>
+                      <p className="text-base font-medium">
+                        Data: {schedule.date}
+                      </p>
+                      <ScheduleDetails patientId={schedule.patient_id} />
+                    </div>
                   ))}
                 </React.Fragment>
               )}
 
-              {data?.length <= 0 && !isFetching && (
+              {schedules?.length <= 0 && !isFetching && (
                 <h3 className="text-primary text-3xl mt-4">
                   Você não tem agendamentos para este dia!
                 </h3>
