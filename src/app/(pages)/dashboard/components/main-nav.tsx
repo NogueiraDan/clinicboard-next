@@ -31,7 +31,7 @@ export function MainNav({
         Agendamento
       </Link>
       <Link
-        href="/dashboard"
+        href="/dashboard/patient"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Cadastro paciente

@@ -40,7 +40,7 @@ export default function Schedulings() {
                   {schedules?.map((schedule: Schedule) => (
                     <div
                       key={schedule.id}
-                      className="rounded border h-auto w-full mb-3 p-3 flex flex-col gap-1"
+                      className="rounded border h-auto w-[90%] ml-5 mb-3 p-3 flex flex-col gap-1"
                     >
                       <p className="text-lg font-medium">
                         Horário: {schedule.hour}
@@ -55,7 +55,7 @@ export default function Schedulings() {
               )}
 
               {schedules?.length <= 0 && !isFetching && (
-                <h3 className="text-primary text-3xl mt-4">
+                <h3 className="text-primary text-3xl mt-4 ml-5">
                   Você não tem agendamentos para este dia!
                 </h3>
               )}
