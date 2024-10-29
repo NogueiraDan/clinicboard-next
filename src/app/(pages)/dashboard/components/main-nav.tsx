@@ -25,7 +25,7 @@ export function MainNav({
         Pacientes
       </Link>
       <Link
-        href="/dashboard"
+        href="/dashboard/scheduling"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Agendamento
