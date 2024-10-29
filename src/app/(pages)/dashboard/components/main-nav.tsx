@@ -19,7 +19,7 @@ export function MainNav({
         <Image src={psiboard} alt="logo.png" width={54}/>
       </Link>
       <Link
-        href="/dashboard"
+        href="/dashboard/patients-list"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Pacientes

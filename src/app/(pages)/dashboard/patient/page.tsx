@@ -78,7 +78,7 @@ export default function Page() {
             </p>
           </div>
           <div className="mt-10 sm:grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
+            <div className="sm:col-span-3 my-3">
               <FormField
                 control={form.control}
                 name="name"
