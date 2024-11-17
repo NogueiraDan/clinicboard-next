@@ -51,11 +51,10 @@ export default function Page() {
   const { user } = useUser();
   const {createSchedule} = useCreateSchedule();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { patients, isFetching } = usePatients();
+  const { patients } = usePatients();
   const { refetchSchedules, schedules } = useAvailableSchedules(state.date);
 
   const handleChange = (type: Action['type'], payload: any) => {
-    console.log(type, payload);
     dispatch({ type, payload });
   };
 
