@@ -1,5 +1,6 @@
 export type ScheduleDetailsProps = {
   patientId: string;
+  scheduleId: string;
 };
 
 export type Schedule = {

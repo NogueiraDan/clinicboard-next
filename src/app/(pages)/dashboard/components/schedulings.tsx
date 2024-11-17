@@ -48,7 +48,7 @@ export default function Schedulings() {
                       <p className="text-base font-medium">
                         Data: {schedule.date}
                       </p>
-                      <ScheduleDetails patientId={schedule.patient_id} />
+                      <ScheduleDetails patientId={schedule.patient_id} scheduleId={schedule.id}/>
                     </div>
                   ))}
                 </React.Fragment>

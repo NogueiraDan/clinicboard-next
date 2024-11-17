@@ -3,9 +3,9 @@ import api from "../service/api";
 import { toast } from "react-toastify";
 import { isAxiosError } from "axios";
 
-export function useDeleteSchedule() {
+export function useDeleteSchedule(id: string) {
     const { mutateAsync } = useMutation({
-      mutationFn: async (id: string) => {
+      mutationFn: async () => {
         await api.delete(`/scheduling/${id}`);
       },
       onSuccess: () => {

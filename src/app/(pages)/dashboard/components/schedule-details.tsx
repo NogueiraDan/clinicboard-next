@@ -2,7 +2,6 @@ import { usePatient } from "@/app/hooks/usePatient";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -21,9 +20,15 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ScheduleDetailsProps } from "../types";
+import { useDeleteSchedule } from "@/app/hooks/useDeleteSchedule";
 
-export default function ScheduleDetails({ patientId }: ScheduleDetailsProps) {
-  const { patient, refetchPatient } = usePatient(patientId);
+export default function ScheduleDetails({
+  patientId,
+  scheduleId,
+}: ScheduleDetailsProps) {
+  const { patient } = usePatient(patientId);
+  const { deleteSchedule } = useDeleteSchedule(scheduleId);
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -63,7 +68,7 @@ export default function ScheduleDetails({ patientId }: ScheduleDetailsProps) {
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
-                <Button variant="destructive">Sim, quero excluir</Button>
+                <Button variant="destructive" onClick={() => deleteSchedule()}>Sim, quero excluir</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
