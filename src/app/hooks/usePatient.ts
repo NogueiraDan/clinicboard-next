@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../service/api";
-import { formatDate } from "../utils/format-date";
 import { fetchHeaders } from "../utils/fetch-headers";
 
 export function usePatient(patientId: string = "") {

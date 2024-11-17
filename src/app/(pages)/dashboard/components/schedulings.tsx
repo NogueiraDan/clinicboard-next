@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
 import { SchedulingSkeleton } from "./skeletons/schedulings-skeleton";
 import { useSchedules } from "@/app/hooks/useSchedules";
-import { usePatient } from "@/app/hooks/usePatient";
 import ScheduleDetails from "./schedule-details";
 import { Schedule } from "../types";
 
