@@ -1,25 +1,22 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
 
+import { useAvailableSchedules } from "@/app/hooks/useAvailableSchedules";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useMemo } from "react";
 
 export default function Statistics() {
+  const date = useMemo(() => new Date(), []);
+  const { schedules, isFetching } = useAvailableSchedules(date);
   return (
     <>
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-xl font-medium">
-            Agendamentos no dia
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="text-xl font-bold">X</div>
-        </CardContent>
-      </Card>
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-xl font-medium">Horários livres</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-xl font-bold">X</div>
+          <div className="text-xl font-bold">
+            {isFetching ? "Carregando..." : schedules.length}
+          </div>
         </CardContent>
       </Card>
     </>
