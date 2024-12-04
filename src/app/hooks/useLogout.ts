@@ -10,6 +10,7 @@ export function useLogout() {
     const logout = () => {
         clearUser();
         Cookie.remove("sessionToken");
+        Cookie.remove("userRole");
         router.push('/login');
     };
     return {

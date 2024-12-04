@@ -78,7 +78,7 @@ export default function Page() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Senha</FormLabel>
                   <FormControl>
                     <Input placeholder="Digite sua senha" type="password" required {...field} />
                   </FormControl>
