@@ -41,7 +41,7 @@ export function useLogin() {
     mutationFn: async (body: LoginBody) => {
       const { data } = await api.post<LoginResponse>("/auth/login", body);
       Cookie.set("sessionToken", data.access_token, { expires: 1 / 12 });
-      Cookie.set("userRole", data.role, { expires: 1 / 12 });
+      Cookie.set("userRole", data.role);
       setUser({
         id: data.id,
         name: data.name,
