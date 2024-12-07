@@ -55,7 +55,7 @@ export default function Schedulings() {
 
               {schedules?.length <= 0 && !isFetching && (
                 <h3 className="text-primary text-3xl ml-0">
-                  Você não tem agendamentos para este dia!
+                  Sem agendamentos para este dia!
                 </h3>
               )}
             </>
