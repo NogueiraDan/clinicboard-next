@@ -16,6 +16,9 @@ import { useUser } from "@/app/context/UserContext";
 import { toast } from "react-toastify";
 import { formatDate } from "@/app/utils/format-date";
 import { useCreateSchedule } from "@/app/hooks/useCreateSchedule";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import { Separator } from "@radix-ui/react-separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 type State = {
   date: Date | undefined;
@@ -86,6 +89,19 @@ export default function Page() {
 
   return (
     <div className="py-5 px-4 mt-0 h-full">
+       <header className="flex h-16 shrink-0 items-center gap-2">
+        <div className="flex items-center gap-2 px-4">
+        <SidebarTrigger className="-ml-1" />
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Agendamento</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      </header>
       <h1 className="text-3xl font-bold text-gray-700 mb-10 md:text-center">
         Agende o horário
       </h1>

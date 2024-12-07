@@ -9,7 +9,7 @@ export default function Statistics() {
   const { schedules, isFetching } = useAvailableSchedules(date);
   return (
     <>
-      <Card>
+      <Card className="min-h-full">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-xl font-medium">Horários livres</CardTitle>
         </CardHeader>

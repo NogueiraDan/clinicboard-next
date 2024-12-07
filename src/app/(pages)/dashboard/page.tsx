@@ -1,13 +1,14 @@
-import { Metadata } from "next";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { RecentSales } from "./components/recent-sales";
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+import { Metadata } from "next";
 import Schedulings from "./components/schedulings";
 import Statistics from "./components/statistics";
 
@@ -18,45 +19,32 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="h-full">
-      <div className="flex-col md:flex">
-        <div className="flex-1 space-y-4 p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+    <SidebarInset>
+      <header className="flex h-16 shrink-0 items-center gap-2">
+        <div className="flex items-center gap-2 px-4">
+        <SidebarTrigger className="-ml-1" />
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Dashboard</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      </header>
+      <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+          <div className="aspect-video rounded-xl bg-muted/50">
+            <Statistics />
           </div>
-          <Tabs defaultValue="overview" className="space-y-4">
-            <TabsList>
-              <TabsTrigger value="overview">Inicio</TabsTrigger>
-              <TabsTrigger value="analytics">Métricas</TabsTrigger>
-              <TabsTrigger value="notifications">Notificações</TabsTrigger>
-            </TabsList>
-            <TabsContent value="overview" className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Statistics />
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-                <Schedulings />
-                <div className="col-span-3">
-                  <Card className="col-span-3">
-                    <CardHeader>
-                      <CardTitle>Recent Sales</CardTitle>
-                      <CardDescription>
-                        You made 265 sales this month.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <RecentSales />
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="analytics" className="space-y-4"></TabsContent>
-          </Tabs>
+          <div className="aspect-video rounded-xl bg-muted/50" />
+          <div className="aspect-video rounded-xl bg-muted/50" />
+        </div>
+        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+          <Schedulings />
         </div>
       </div>
-    </main>
+    </SidebarInset>
   );
 }

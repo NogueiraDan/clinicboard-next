@@ -19,9 +19,9 @@ export default function Schedulings() {
   return (
     <Card className="col-span-3">
       <CardHeader>
-        <CardTitle>Agendamentos do dia</CardTitle>
+        <CardTitle className="text-base">Agendamentos do dia</CardTitle>
       </CardHeader>
-      <CardContent className="pl-2 flex justify-between">
+      <CardContent className="flex justify-between">
         <Calendar
           mode="single"
           selected={date}
@@ -54,7 +54,7 @@ export default function Schedulings() {
               )}
 
               {schedules?.length <= 0 && !isFetching && (
-                <h3 className="text-primary text-3xl mt-4 ml-5">
+                <h3 className="text-primary text-3xl ml-0">
                   Você não tem agendamentos para este dia!
                 </h3>
               )}
