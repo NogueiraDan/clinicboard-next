@@ -2,16 +2,10 @@
 
 import * as React from "react";
 import {
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
   LifeBuoy,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
   Send,
+  UserSearch,
+  Bookmark
 } from "lucide-react";
 
 import { NavMain } from "@/components/dashboard/nav-main";
@@ -43,7 +37,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         title: "Pacientes",
         url: "#",
-        icon: SquareTerminal,
+        icon: UserSearch,
         isActive: true,
         items: [
           {
@@ -59,7 +53,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {
         title: "Agendamento",
         url: "#",
-        icon: Bot,
+        icon: Bookmark,
         items: [
           {
             title: "Criar Agendamento",

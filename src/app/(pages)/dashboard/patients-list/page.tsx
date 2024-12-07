@@ -14,24 +14,13 @@ import SkeletonTable from "../components/skeletons/table-skeleton";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
+import PageHeader from "@/components/page-header";
 
 export default function Page() {
   const { patients, isFetching } = usePatients();
   return (
     <main className="flex w-full flex-col">
-       <header className="flex h-16 shrink-0 items-center gap-2">
-        <div className="flex items-center gap-2 px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Pacientes</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-      </header>
+      <PageHeader title="Pacientes" />
       {isFetching ? (
         <SkeletonTable />
       ) : (

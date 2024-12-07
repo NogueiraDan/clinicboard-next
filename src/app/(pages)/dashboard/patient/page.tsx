@@ -20,6 +20,7 @@ import { Patient } from "../types";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import PageHeader from "@/components/page-header";
 
 const formSchema = z.object({
   name: z.string(),
@@ -67,19 +68,7 @@ export default function Page() {
   }
   return (
     <>
-      <header className="flex h-16 shrink-0 items-center gap-2">
-        <div className="flex items-center gap-2 px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Paciente</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-      </header>
+     <PageHeader title="Paciente" />
       <main className="px-10 my-10 flex w-full flex-col">
         <Form {...form}>
           <form

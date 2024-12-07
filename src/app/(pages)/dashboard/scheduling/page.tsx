@@ -16,9 +16,15 @@ import { useUser } from "@/app/context/UserContext";
 import { toast } from "react-toastify";
 import { formatDate } from "@/app/utils/format-date";
 import { useCreateSchedule } from "@/app/hooks/useCreateSchedule";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
 import { Separator } from "@radix-ui/react-separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import PageHeader from "@/components/page-header";
 
 type State = {
   date: Date | undefined;
@@ -27,9 +33,9 @@ type State = {
 };
 
 type Action =
-  | { type: 'SET_DATE'; payload: Date | undefined }
-  | { type: 'SET_SCHEDULE'; payload: string | undefined }
-  | { type: 'SET_SELECTED_PATIENT'; payload: string };
+  | { type: "SET_DATE"; payload: Date | undefined }
+  | { type: "SET_SCHEDULE"; payload: string | undefined }
+  | { type: "SET_SELECTED_PATIENT"; payload: string };
 
 const initialState: State = {
   date: new Date(),
@@ -39,11 +45,11 @@ const initialState: State = {
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case 'SET_DATE':
+    case "SET_DATE":
       return { ...state, date: action.payload };
-    case 'SET_SCHEDULE':
+    case "SET_SCHEDULE":
       return { ...state, schedule: action.payload };
-    case 'SET_SELECTED_PATIENT':
+    case "SET_SELECTED_PATIENT":
       return { ...state, selectedPatient: action.payload };
     default:
       return state;
@@ -52,21 +58,20 @@ function reducer(state: State, action: Action): State {
 
 export default function Page() {
   const { user } = useUser();
-  const {createSchedule} = useCreateSchedule();
+  const { createSchedule } = useCreateSchedule();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { patients } = usePatients();
   const { refetchSchedules, schedules } = useAvailableSchedules(state.date);
 
-  const handleChange = (type: Action['type'], payload: any) => {
+  const handleChange = (type: Action["type"], payload: any) => {
     dispatch({ type, payload });
   };
 
   function handleChangeCalendarDay(date: Date) {
-    handleChange('SET_DATE', date);
+    handleChange("SET_DATE", date);
     refetchSchedules();
   }
 
-  
   async function onSubmit() {
     const body = {
       date: formatDate(state.date),
@@ -88,39 +93,25 @@ export default function Page() {
   }
 
   return (
-    <div className="py-5 px-4 mt-0 h-full">
-       <header className="flex h-16 shrink-0 items-center gap-2">
-        <div className="flex items-center gap-2 px-4">
-        <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Agendamento</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-      </header>
+    <div className="pt-2 mt-0 h-full">
+      <PageHeader title="Agendamento" />
       <h1 className="text-3xl font-bold text-gray-700 mb-10 md:text-center">
         Agende o horário
       </h1>
 
       <div className="flex flex-row justify-start md:justify-center">
         <div className="flex flex-col gap-10 sm:w-full md:w-[45%] lg:w-[35%]">
-
           <div>
             <label className="font-semibold">Horário</label>
-            <Select onValueChange={(value) => handleChange('SET_SCHEDULE', value)}>
+            <Select
+              onValueChange={(value) => handleChange("SET_SCHEDULE", value)}
+            >
               <SelectTrigger className="w-full max-w-xs">
                 <SelectValue placeholder="Selecione o horário" />
               </SelectTrigger>
               <SelectContent>
                 {schedules.map((schedule: any) => (
-                  <SelectItem
-                    key={schedule}
-                    value={schedule}
-                  >
+                  <SelectItem key={schedule} value={schedule}>
                     {schedule}
                   </SelectItem>
                 ))}
@@ -130,16 +121,17 @@ export default function Page() {
 
           <div>
             <label className="font-semibold">Paciente</label>
-            <Select onValueChange={(value) => handleChange('SET_SELECTED_PATIENT', value)}>
+            <Select
+              onValueChange={(value) =>
+                handleChange("SET_SELECTED_PATIENT", value)
+              }
+            >
               <SelectTrigger className="w-full max-w-xs">
                 <SelectValue placeholder="Selecione o paciente" />
               </SelectTrigger>
               <SelectContent>
                 {patients.map((patient: any) => (
-                  <SelectItem
-                    key={patient.id}
-                    value={patient.id}
-                  >
+                  <SelectItem key={patient.id} value={patient.id}>
                     {patient.name}
                   </SelectItem>
                 ))}
@@ -162,7 +154,7 @@ export default function Page() {
           <Calendar
             mode="single"
             selected={state.date}
-            onSelect={(date) => handleChange('SET_DATE', date)}
+            onSelect={(date) => handleChange("SET_DATE", date)}
             onDayClick={handleChangeCalendarDay}
             className="rounded-md border p-4 w-full items-center justify-center flex"
           />
