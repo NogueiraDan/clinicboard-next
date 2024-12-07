@@ -85,31 +85,13 @@ export default function Page() {
   }
 
   return (
-    <div className="py-5 px-4 md:px-8 mt-5">
+    <div className="py-5 px-4 mt-0 h-full">
       <h1 className="text-3xl font-bold text-gray-700 mb-10 md:text-center">
         Agende o horário
       </h1>
 
       <div className="flex flex-row justify-start md:justify-center">
         <div className="flex flex-col gap-10 sm:w-full md:w-[45%] lg:w-[35%]">
-          <div>
-            <label className="font-semibold">Paciente</label>
-            <Select onValueChange={(value) => handleChange('SET_SELECTED_PATIENT', value)}>
-              <SelectTrigger className="w-full max-w-xs">
-                <SelectValue placeholder="Selecione o paciente" />
-              </SelectTrigger>
-              <SelectContent>
-                {patients.map((patient: any) => (
-                  <SelectItem
-                    key={patient.id}
-                    value={patient.id}
-                  >
-                    {patient.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
 
           <div>
             <label className="font-semibold">Horário</label>
@@ -124,6 +106,25 @@ export default function Page() {
                     value={schedule}
                   >
                     {schedule}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <label className="font-semibold">Paciente</label>
+            <Select onValueChange={(value) => handleChange('SET_SELECTED_PATIENT', value)}>
+              <SelectTrigger className="w-full max-w-xs">
+                <SelectValue placeholder="Selecione o paciente" />
+              </SelectTrigger>
+              <SelectContent>
+                {patients.map((patient: any) => (
+                  <SelectItem
+                    key={patient.id}
+                    value={patient.id}
+                  >
+                    {patient.name}
                   </SelectItem>
                 ))}
               </SelectContent>
