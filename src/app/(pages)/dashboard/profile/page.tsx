@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
+import { useUpdateUser } from "@/app/hooks/useUpdateUser";
 
 const formSchema = z.object({
   name: z.string(),
@@ -27,19 +28,25 @@ const formSchema = z.object({
 
 export default function Page() {
   const { user } = useUser();
+  const { updateUser } = useUpdateUser();
   const [isEditing, setIsEditing] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      contact: "",
       email: "",
+      contact: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
     console.log(data);
+    try {
+      await updateUser(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -66,10 +73,11 @@ export default function Page() {
           {isEditing ? "Cancelar" : "Editar"}
         </Button>
       </div>
-      {/* Formulário */}
       <Form {...form}>
-        <form className="grid grid-cols-2 gap-6 px-5 mt-5">
-          {/* Nome Completo */}
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="grid grid-cols-2 gap-6 px-5 mt-5"
+        >
           <div>
             <FormField
               control={form.control}
@@ -85,7 +93,6 @@ export default function Page() {
                       disabled={!isEditing}
                       className="w-full h-[48px] p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
                       {...field}
-                      value={user?.name}
                     />
                   </FormControl>
                   <FormMessage />
@@ -94,7 +101,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Apelido */}
           <div>
             <FormField
               control={form.control}
@@ -110,7 +116,6 @@ export default function Page() {
                       disabled={!isEditing}
                       className="w-full h-[48px] p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
                       {...field}
-                      value={user?.email}
                     />
                   </FormControl>
                   <FormMessage />
@@ -119,7 +124,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Gênero */}
           <div>
             <FormField
               control={form.control}
@@ -142,16 +146,12 @@ export default function Page() {
               )}
             />
           </div>
+          <div className="flex items-center justify-center mt-10 w-full">
+            <Button variant="default" className="w-[200px] h-10" type="submit">
+              Alterar
+            </Button>
+          </div>
         </form>
-
-        <div className="flex items-center justify-center mt-10 w-full">
-          <Button
-            variant="default"
-            className="w-[200px] h-10"
-          >
-            Alterar
-          </Button>
-        </div>
       </Form>
     </SidebarInset>
   );
