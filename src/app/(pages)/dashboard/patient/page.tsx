@@ -69,7 +69,7 @@ export default function Page() {
   return (
     <>
      <PageHeader title="Paciente" />
-      <main className="px-10 my-10 flex w-full flex-col">
+      <main className="px-5 my-10 flex w-full flex-col">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
