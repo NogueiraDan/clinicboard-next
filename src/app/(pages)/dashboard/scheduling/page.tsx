@@ -16,14 +16,6 @@ import { useUser } from "@/app/context/UserContext";
 import { toast } from "react-toastify";
 import { formatDate } from "@/app/utils/format-date";
 import { useCreateSchedule } from "@/app/hooks/useCreateSchedule";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@radix-ui/react-separator";
-import { SidebarTrigger } from "@/components/ui/sidebar";
 import PageHeader from "@/components/page-header";
 
 type State = {

@@ -17,9 +17,6 @@ import { Input } from "@/components/ui/input";
 import { useUser } from "@/app/context/UserContext";
 import { useCreatePatient } from "@/app/hooks/useCreatePatients";
 import { Patient } from "../types";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "@radix-ui/react-separator";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import PageHeader from "@/components/page-header";
 
 const formSchema = z.object({

@@ -1,16 +1,8 @@
-"use client"
+"use client";
 
-import {
-  Bell,
-  LogOut,
-  User,
-} from "lucide-react"
+import { Bell, LogOut, User } from "lucide-react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,26 +11,27 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons"
-import { useLogout } from "@/app/hooks/useLogout"
+} from "@/components/ui/sidebar";
+import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons";
+import { useLogout } from "@/app/hooks/useLogout";
+import Link from "next/link";
 
 export function NavUser({
   user,
 }: {
   user: {
-    name: string
-    email: string
-    avatar: string
-  }
+    name: string;
+    email: string;
+    avatar: string;
+  };
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
   const { logout } = useLogout();
 
   return (
@@ -85,7 +78,7 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <User />
-                Perfil
+                <Link href="/dashboard/profile">Perfil</Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -97,5 +90,5 @@ export function NavUser({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

@@ -11,9 +11,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import SkeletonTable from "../components/skeletons/table-skeleton";
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbPage } from "@/components/ui/breadcrumb";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "@radix-ui/react-separator";
 import PageHeader from "@/components/page-header";
 
 export default function Page() {
