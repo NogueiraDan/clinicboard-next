@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { isAxiosError } from "axios";
 
 export function useCreatePatient() {
-  const router = useRouter()
+  const router = useRouter();
   const { mutateAsync } = useMutation({
     mutationFn: async (body : any): Promise<any> => {
       const response = await api.post(`/patients`, body);

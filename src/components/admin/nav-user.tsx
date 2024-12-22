@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
 import {
   Bell,
   LogOut,
   User,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar"
+} from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,15 +19,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons"
-import { useLogout } from "@/app/hooks/useLogout"
+} from "@/components/ui/sidebar";
+import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons";
+import { useLogout } from "@/app/hooks/useLogout";
 
 export function NavUser({
   user,
@@ -38,7 +38,7 @@ export function NavUser({
     avatar: string
   }
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
   const { logout } = useLogout();
 
   return (
@@ -97,5 +97,5 @@ export function NavUser({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }
