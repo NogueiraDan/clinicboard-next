@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Bell,
   LogOut,
   User,
 } from "lucide-react";
@@ -26,7 +25,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { useLogout } from "@/app/hooks/useLogout";
 
 export function NavUser({

@@ -4,7 +4,6 @@ import { usePatients } from "@/app/hooks/usePatients";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import SkeletonTable from "../components/skeletons/table-skeleton";
 import PageHeader from "@/components/page-header";
+import { PatientResponse } from "../types";
 
 export default function Page() {
   const { patients, isFetching } = usePatients();
@@ -30,11 +30,14 @@ export default function Page() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {patients.map((patient: any) => (
+            {patients.map((patient: PatientResponse) => (
               <TableRow key={patient.id}>
                 <TableCell>{patient.name}</TableCell>
                 <TableCell>{patient.phone}</TableCell>
-                <TableCell>{patient.street}, {patient.district}, {patient.city}, {patient.state}</TableCell>
+                <TableCell>
+                  {patient.street}, {patient.district}, {patient.city},
+                  {patient.state}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

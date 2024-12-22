@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useUser } from "@/app/context/UserContext";
 import { useCreatePatient } from "@/app/hooks/useCreatePatients";
-import { Patient } from "../types";
+import { PatientRequest } from "../types";
 import PageHeader from "@/components/page-header";
 
 const formSchema = z.object({
@@ -52,7 +52,7 @@ export default function Page() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const body: Patient = {
+    const body: PatientRequest = {
       ...values,
       user_id: user?.id ?? "",
       age: Number(values.age),

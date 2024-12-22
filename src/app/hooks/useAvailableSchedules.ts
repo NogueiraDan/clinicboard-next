@@ -4,7 +4,7 @@ import api from "../service/api";
 import { formatDate } from "../utils/format-date";
 import { fetchHeaders } from "../utils/fetch-headers";
 
-export function useAvailableSchedules(date: any) {
+export function useAvailableSchedules(date: Date | undefined) {
   const { user } = useUser();
 
   const { data, isFetching, refetch } = useQuery({

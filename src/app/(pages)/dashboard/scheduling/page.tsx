@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { formatDate } from "@/app/utils/format-date";
 import { useCreateSchedule } from "@/app/hooks/useCreateSchedule";
 import PageHeader from "@/components/page-header";
+import { PatientResponse } from "../types";
 
 type State = {
   date: Date | undefined;
@@ -55,8 +56,11 @@ export default function Page() {
   const { patients } = usePatients();
   const { refetchSchedules, schedules } = useAvailableSchedules(state.date);
 
-  const handleChange = (type: Action["type"], payload: any) => {
-    dispatch({ type, payload });
+  const handleChange = (
+    type: Action["type"],
+    payload: Action["payload"]
+  ) => {
+    dispatch({ type, payload } as Action);
   };
 
   function handleChangeCalendarDay(date: Date) {
@@ -102,7 +106,7 @@ export default function Page() {
                 <SelectValue placeholder="Selecione o horário" />
               </SelectTrigger>
               <SelectContent>
-                {schedules.map((schedule: any) => (
+                {schedules.map((schedule: string) => (
                   <SelectItem key={schedule} value={schedule}>
                     {schedule}
                   </SelectItem>
@@ -122,7 +126,7 @@ export default function Page() {
                 <SelectValue placeholder="Selecione o paciente" />
               </SelectTrigger>
               <SelectContent>
-                {patients.map((patient: any) => (
+                {patients.map((patient: PatientResponse) => (
                   <SelectItem key={patient.id} value={patient.id}>
                     {patient.name}
                   </SelectItem>

@@ -3,11 +3,12 @@ import api from "@/app/service/api";
 import { toast } from "react-toastify";
 import { useRouter } from 'next/navigation';
 import { isAxiosError } from "axios";
+import { ScheduleRequest, ScheduleResponse } from "../(pages)/dashboard/types";
 
 export function useCreateSchedule() {
   const router = useRouter();
   const { mutateAsync } = useMutation({
-    mutationFn: async (body : any): Promise<any> => {
+    mutationFn: async (body : ScheduleRequest): Promise<ScheduleResponse> => {
       const response = await api.post(`/scheduling`, body);
       return response.data;
     },
