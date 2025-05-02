@@ -34,9 +34,9 @@ export default function Page() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      contact: "",
+      name: user?.name || "",
+      email: user?.email || "",
+      contact: user?.contact || "",
     },
   });
 

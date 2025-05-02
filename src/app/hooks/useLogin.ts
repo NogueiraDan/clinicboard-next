@@ -10,6 +10,7 @@ interface LoginResponse {
   id: string;
   name: string;
   email: string;
+  contact: string;
   role: string;
   access_token: string;
 }
@@ -25,9 +26,11 @@ export function useLogin() {
 
   const handleSuccess = (role: string) => {
     toast.success("Login realizado com sucesso!");
-    role === "ADMIN"
-      ? router.push("/admin/dashboard")
-      : router.push("/dashboard");
+    if (role === "ADMIN") {
+      router.push("/admin/dashboard");
+    } else {
+      router.push("/dashboard");
+    }
   };
 
   const handleError = (error: AxiosError | Error) => {
@@ -46,6 +49,7 @@ export function useLogin() {
         id: data.id,
         name: data.name,
         email: data.email,
+        contact: data.contact,
         role: data.role,
       });
       return data;
