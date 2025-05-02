@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Link from "next/link";
-import psiboard from "@/public/psiboard.png";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,9 +17,11 @@ import { Input } from "@/components/ui/input";
 import { useLogin } from "@/app/hooks/useLogin";
 
 const formSchema = z.object({
-  email: z.string({
-    required_error: "Valor não pode ser vazio",
-  }).email(),
+  email: z
+    .string({
+      required_error: "Valor não pode ser vazio",
+    })
+    .email(),
   password: z.string({
     required_error: "Valor não pode ser vazio",
   }),
@@ -47,11 +48,6 @@ export default function Page() {
   return (
     <div className="flex min-h-[100vh] flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className=" flex flex-col items-center">
-        <img
-          src={psiboard.src}
-          alt="Logo"
-          className="h-16 w-auto cursor-pointer"
-        />
         <h1 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-[f3f3f3]">
           Faça login na sua conta
         </h1>
@@ -59,7 +55,10 @@ export default function Page() {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 flex flex-col"
+          >
             <FormField
               control={form.control}
               name="email"
@@ -67,7 +66,12 @@ export default function Page() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Digite seu email" type="email" required {...field} />
+                    <Input
+                      placeholder="Digite seu email"
+                      type="email"
+                      required
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -80,7 +84,12 @@ export default function Page() {
                 <FormItem>
                   <FormLabel>Senha</FormLabel>
                   <FormControl>
-                    <Input placeholder="Digite sua senha" type="password" required {...field} />
+                    <Input
+                      placeholder="Digite sua senha"
+                      type="password"
+                      required
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
