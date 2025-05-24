@@ -9,7 +9,7 @@ export type Schedule = {
   hour: string;
   type: string;
   user_id: string;
-  patient_id: string;
+  patientId: string;
 };
 
 export type PatientRequest = {
@@ -31,14 +31,8 @@ export type PatientResponse = {
   name: string;
   age: number;
   email: string;
-  phone: string;
-  street: string;
-  district: string;
-  city: string;
-  state: string;
-  zip_code: string;
-  additional_info: string;
-  user_id: string;
+  contact: string;
+  professionalId: string;
 };
 
 export type ScheduleRequest = {

@@ -7,7 +7,7 @@ export function usePatient(patientId: string = "") {
     queryKey: ["schedules", patientId],
     queryFn: async () => {
       const response = await api.get(
-        `/patients/patient/${patientId}`,
+        `/patients/${patientId}`,
         { headers: fetchHeaders() }
       );
       return response.data;

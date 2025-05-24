@@ -11,7 +11,7 @@ export function usePatients() {
   const { data, isFetching } = useQuery({
     queryKey: ["schedules", user?.id],
     queryFn: async () => {
-      const response = await api.get(`/patients/user/${user?.id}/patients`, {
+      const response = await api.get(`/patients/professional/${user?.id}`, {
         headers: fetchHeaders(),
       });
       return response.data;

@@ -11,7 +11,6 @@ export function useSchedules(date: Date | undefined) {
   const { data, isFetching, refetch } = useQuery({
     queryKey: ["schedules", date, user?.id],
     queryFn: async () => {
-      console.log("Fetching headers...",fetchHeaders());
       const response = await api.get(
         `/appointments/professional?id=${user?.id}&date=${formatDate(date)}`,
         { headers: fetchHeaders() }

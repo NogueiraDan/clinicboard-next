@@ -46,11 +46,7 @@ export default function ScheduleDetails({
                 Email: {patient.email}
               </p>
               <p className="text-base font-medium text-slate-700">
-                Contato: {patient.phone}
-              </p>
-              <p className="text-base font-medium text-slate-700">
-                Endereço: {patient.street}, {patient.district}, {patient.city},{" "}
-                {patient.state}
+                Contato: {patient.contact}
               </p>
             </div>
           </AlertDialogDescription>

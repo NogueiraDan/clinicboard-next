@@ -24,20 +24,17 @@ export default function Page() {
         <Table className="cursor-pointer">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Nome</TableHead>
+              <TableHead className="w-auto">Nome</TableHead>
               <TableHead>Contato</TableHead>
-              <TableHead>Endereço</TableHead>
+              <TableHead>Email</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {patients.map((patient: PatientResponse) => (
               <TableRow key={patient.id}>
                 <TableCell>{patient.name}</TableCell>
-                <TableCell>{patient.phone}</TableCell>
-                <TableCell>
-                  {patient.street}, {patient.district}, {patient.city},
-                  {patient.state}
-                </TableCell>
+                <TableCell>{patient.contact}</TableCell>
+                <TableCell>{patient.email}</TableCell>
               </TableRow>
             ))}
           </TableBody>
