@@ -37,10 +37,10 @@ export type PatientResponse = {
 
 export type ScheduleRequest = {
   date: string;
-  hour: string | undefined;
-  type: string;
-  patient_id: string;
-  user_id: string | undefined;
+  patientId: string;
+  professionalId: string;
+  observation?: string;
+  type?: string;
 };
 
 export type ScheduleResponse = {
@@ -52,17 +52,16 @@ export type ScheduleResponse = {
   user_id: string | undefined;
 };
 
-
-export type UserUpdateRequest = { 
-  name: string; 
+export type UserUpdateRequest = {
+  name: string;
   email: string;
   contact: string;
-}
+};
 
-export type UserUpdateResponse = { 
-  id: string; 
-  name: string; 
+export type UserUpdateResponse = {
+  id: string;
+  name: string;
   email: string;
-  contact: string; 
-  role: string; 
-}
+  contact: string;
+  role: string;
+};

@@ -14,10 +14,10 @@ import { Button } from "@/components/ui/button";
 import { useAvailableSchedules } from "@/app/hooks/useAvailableSchedules";
 import { useUser } from "@/app/context/UserContext";
 import { toast } from "react-toastify";
-import { formatDate } from "@/app/utils/format-date";
 import { useCreateSchedule } from "@/app/hooks/useCreateSchedule";
 import PageHeader from "@/components/page-header";
-import { PatientResponse } from "../types";
+import { PatientResponse, ScheduleRequest } from "../types";
+import { combineDateAndTime } from "@/app/utils/combine-date";
 
 type State = {
   date: Date | undefined;
@@ -56,10 +56,7 @@ export default function Page() {
   const { patients } = usePatients();
   const { refetchSchedules, schedules } = useAvailableSchedules(state.date);
 
-  const handleChange = (
-    type: Action["type"],
-    payload: Action["payload"]
-  ) => {
+  const handleChange = (type: Action["type"], payload: Action["payload"]) => {
     dispatch({ type, payload } as Action);
   };
 
@@ -69,12 +66,10 @@ export default function Page() {
   }
 
   async function onSubmit() {
-    const body = {
-      date: formatDate(state.date),
-      hour: state.schedule,
-      type: "MARCACAO",
-      patient_id: state.selectedPatient,
-      user_id: user?.id,
+    const body: ScheduleRequest = {
+      date: combineDateAndTime(state.date, state.schedule),
+      professionalId: user?.id ?? "",
+      patientId: state.selectedPatient,
     };
     if (Object.values(body).some((value) => value === "")) {
       toast.error("Por favor! Selecione a DATA, o PACIENTE, e o HORÁRIO.");
@@ -98,7 +93,7 @@ export default function Page() {
       <div className="flex flex-row justify-start md:justify-center">
         <div className="flex flex-col gap-10 sm:w-full md:w-[45%] lg:w-[35%]">
           <div>
-            <label className="font-semibold">Horário</label>
+            <label className="font-semibold">Horários Livres</label>
             <Select
               onValueChange={(value) => handleChange("SET_SCHEDULE", value)}
             >
