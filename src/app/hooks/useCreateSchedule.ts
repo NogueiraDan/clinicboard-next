@@ -22,7 +22,7 @@ export function useCreateSchedule() {
     onError(error) {
       console.log("Caiu no onError do useCreatePatient", error);
       if (isAxiosError(error)) {
-        toast.error(error.response?.data.message);
+        toast.error(error.response?.data.message || error.message);
         console.log(error);
       }
     },
