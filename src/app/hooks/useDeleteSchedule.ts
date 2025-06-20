@@ -7,7 +7,7 @@ import { fetchHeaders } from "../utils/fetch-headers";
 export function useDeleteSchedule(id: string) {
     const { mutateAsync } = useMutation({
       mutationFn: async () => {
-        await api.delete(`/appointments/${id}`,{
+        await api.delete(`/appointment/${id}`,{
           headers: fetchHeaders(),
         });
       },
