@@ -14,16 +14,10 @@ export type Schedule = {
 
 export type PatientRequest = {
   name: string;
-  age: number;
   email: string;
-  phone: string;
-  street: string;
-  district: string;
-  city: string;
-  state: string;
-  zip_code: string;
-  additional_info: string;
-  user_id: string;
+  contact: string;
+  professionalId: string;
+  observation?: string;
 };
 
 export type PatientResponse = {

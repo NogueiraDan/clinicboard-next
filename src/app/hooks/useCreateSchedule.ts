@@ -10,7 +10,7 @@ export function useCreateSchedule() {
   const router = useRouter();
   const { mutateAsync } = useMutation({
     mutationFn: async (body: ScheduleRequest): Promise<ScheduleResponse> => {
-      const response = await api.post(`/appointments`, body, {
+      const response = await api.post(`/appointment`, body, {
         headers: fetchHeaders(),
       });
       return response.data;

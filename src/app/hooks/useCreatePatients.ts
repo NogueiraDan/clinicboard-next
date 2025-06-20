@@ -9,7 +9,7 @@ export function useCreatePatient() {
   const router = useRouter();
   const { mutateAsync } = useMutation({
     mutationFn: async (body : PatientRequest): Promise<PatientResponse> => {
-      const response = await api.post(`/patients`, body);
+      const response = await api.post(`/patient`, body);
       return response.data;
     },
     onSuccess: () => {

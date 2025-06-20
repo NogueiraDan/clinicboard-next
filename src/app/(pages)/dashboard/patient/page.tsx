@@ -21,15 +21,9 @@ import PageHeader from "@/components/page-header";
 
 const formSchema = z.object({
   name: z.string(),
-  age: z.string(),
   email: z.string(),
-  phone: z.string(),
-  street: z.string(),
-  district: z.string(),
-  city: z.string(),
-  state: z.string(),
-  zip_code: z.string(),
-  additional_info: z.string(),
+  contact: z.string(),
+  observation: z.string(),
 });
 
 export default function Page() {
@@ -39,23 +33,16 @@ export default function Page() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      age: "",
       email: "",
-      phone: "",
-      street: "",
-      district: "",
-      city: "",
-      state: "",
-      zip_code: "",
-      additional_info: "",
+      contact: "",
+      observation: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const body: PatientRequest = {
       ...values,
-      user_id: user?.id ?? "",
-      age: Number(values.age),
+      professionalId: user?.id ?? "",
     };
     try {
       await createPatient(body);
@@ -65,7 +52,7 @@ export default function Page() {
   }
   return (
     <>
-     <PageHeader title="Paciente" />
+      <PageHeader title="Paciente" />
       <main className="px-5 my-10 flex w-full flex-col">
         <Form {...form}>
           <form
@@ -101,21 +88,7 @@ export default function Page() {
                   )}
                 />
               </div>
-              <div className="sm:col-span-1 my-3">
-                <FormField
-                  control={form.control}
-                  name="age"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Idade</FormLabel>
-                      <FormControl>
-                        <Input type="number" required {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+
               <div className="sm:col-span-2 my-3">
                 <FormField
                   control={form.control}
@@ -140,7 +113,7 @@ export default function Page() {
               <div className="sm:col-span-2 my-3">
                 <FormField
                   control={form.control}
-                  name="phone"
+                  name="contact"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Telefone para contato</FormLabel>
@@ -158,115 +131,10 @@ export default function Page() {
                 />
               </div>
 
-              <div className="sm:col-span-2 my-3">
-                <FormField
-                  control={form.control}
-                  name="zip_code"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>CEP</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="01001-900"
-                          type="text"
-                          required
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="sm:col-span-2 my-3">
-                <FormField
-                  control={form.control}
-                  name="street"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Rua</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Rua das flores..."
-                          type="text"
-                          required
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="sm:col-span-2 my-3">
-                <FormField
-                  control={form.control}
-                  name="district"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Bairro</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Bairro do Jardim..."
-                          type="text"
-                          required
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="sm:col-span-2 my-3">
-                <FormField
-                  control={form.control}
-                  name="city"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Cidade</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="São Paulo"
-                          type="text"
-                          required
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="sm:col-span-2 my-3">
-                <FormField
-                  control={form.control}
-                  name="state"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Estado</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="São Paulo"
-                          type="text"
-                          required
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
               <div className="col-span-full">
                 <FormField
                   control={form.control}
-                  name="additional_info"
+                  name="observation"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Informações adicionais</FormLabel>
