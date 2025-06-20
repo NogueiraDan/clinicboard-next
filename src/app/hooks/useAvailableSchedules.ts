@@ -11,7 +11,7 @@ export function useAvailableSchedules(date: Date | undefined) {
     queryKey: ["schedules", date, user?.id],
     queryFn: async () => {
       const response = await api.get(
-        `/appointments/available-times?professionalId=${
+        `/appointment/available-times?id=${
           user?.id
         }&date=${formatDate(date)}`,
         { headers: fetchHeaders() }
