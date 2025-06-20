@@ -12,7 +12,7 @@ export function useSchedules(date: Date | undefined) {
     queryKey: ["schedules", date, user?.id],
     queryFn: async () => {
       const response = await api.get(
-        `/appointments/professional?id=${user?.id}&date=${formatDate(date)}`,
+        `/appointment/professional?id=${user?.id}&date=${formatDate(date)}`,
         { headers: fetchHeaders() }
       );
       return response.data;
